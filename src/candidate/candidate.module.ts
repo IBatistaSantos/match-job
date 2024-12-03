@@ -6,8 +6,8 @@ import {
 } from './repositories/implementations/mongo/candidate.schema';
 import { CreateCandidateService } from './services/create-candidate.service';
 import { MongoCandidateRepository } from './repositories/implementations/mongo/mongo-candidate.repository';
-import { OpenAIEmbed } from './providers/embed/implementations/openai-embed.provider';
-import { PineconeProvider } from './providers/search/implementations/pinecone.provider';
+import { OpenAIEmbed } from '../shared/providers/embed/implementations/openai-embed.provider';
+import { PineconeProvider } from '../shared/providers/search/implementations/pinecone.provider';
 import { CandidateController } from './controllers/candidate.controller';
 
 @Module({

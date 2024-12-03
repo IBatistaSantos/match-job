@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable, Inject } from '@nestjs/common';
 import { Candidate } from '../entities/candidate';
-import { EmbeddingProvider } from '../providers/embed/embed.provider';
-import { SearchProvider } from '../providers/search/search.provider';
+import { EmbeddingProvider } from '../../shared/providers/embed/embed.provider';
+import { SearchProvider } from '../../shared/providers/search/search.provider';
 import { CandidateRepository } from '../repositories/candidate.repository';
 
 interface CreateCandidateInput {
