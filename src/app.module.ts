@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { CandidateModule } from './candidate/candidate.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { JobModule } from './job/job.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       inject: [ConfigService],
     }),
     CandidateModule,
+    JobModule,
   ],
   controllers: [],
   providers: [],
