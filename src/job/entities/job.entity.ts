@@ -30,6 +30,22 @@ export class Job extends BaseEntity {
     return this._skills;
   }
 
+  update(data: Partial<JobProps>) {
+    if (data.title) {
+      this._title = data.title;
+    }
+
+    if (data.description) {
+      this._description = data.description;
+    }
+
+    if (data.skills) {
+      this._skills = data.skills;
+    }
+
+    this._updatedAt = new Date();
+  }
+
   toJSON() {
     return {
       ...super.toJSON(),
