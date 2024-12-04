@@ -12,7 +12,7 @@ export type BaseProps = Partial<Props>;
 export class BaseEntity {
   private _id: string;
   private _createdAt: Date;
-  private _updatedAt: Date;
+  protected _updatedAt: Date;
   private _status: string;
 
   constructor(props?: BaseProps) {
@@ -36,6 +36,10 @@ export class BaseEntity {
 
   get status(): string {
     return this._status;
+  }
+
+  delete(): void {
+    this._status = 'INACTIVE';
   }
 
   toJSON(): Props {

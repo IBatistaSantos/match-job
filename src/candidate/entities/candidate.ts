@@ -1,6 +1,6 @@
 import { BaseEntity, BaseProps } from '@/core/entity/base.entity';
 
-interface CandidateProps extends BaseProps {
+export interface CandidateProps extends BaseProps {
   name: string;
   email: string;
   skills: string[];
