@@ -7,8 +7,13 @@ import {
 import { CreateCandidateService } from './services/create-candidate.service';
 import { MongoCandidateRepository } from './repositories/implementations/mongo/mongo-candidate.repository';
 import { OpenAIEmbed } from '../shared/providers/embed/implementations/openai-embed.provider';
-import { PineconeProvider } from '../shared/providers/search/implementations/pinecone.provider';
+import { PineconeProvider } from '../shared/providers/vectorial-database/implementations/pinecone.provider';
 import { CandidateController } from './controllers/candidate.controller';
+import { BcryptHashProvider } from '@/shared/providers/hash/implementations/bcrypt-hash.provider';
+import { AuthCandidateService } from './services/auth-candidate.service';
+import { JwtModule, JwtService } from '@nestjs/jwt';
+import { JwtStrategy } from './jwt.strategy';
+import { ProfileCandidateService } from './services/profile-candidate.service';
 
 @Module({
   imports: [
@@ -18,10 +23,20 @@ import { CandidateController } from './controllers/candidate.controller';
         schema: CandidateSchema,
       },
     ]),
+    JwtModule.registerAsync({
+      useFactory: async () => ({
+        secret: process.env.JWT_SECRET,
+        signOptions: { expiresIn: '1d' },
+      }),
+    }),
   ],
   controllers: [CandidateController],
   providers: [
     CreateCandidateService,
+    AuthCandidateService,
+    ProfileCandidateService,
+    JwtService,
+    JwtStrategy,
     {
       provide: 'CandidateRepository',
       useClass: MongoCandidateRepository,
@@ -31,8 +46,12 @@ import { CandidateController } from './controllers/candidate.controller';
       useClass: OpenAIEmbed,
     },
     {
-      provide: 'SearchProvider',
+      provide: 'VectorialDatabase',
       useClass: PineconeProvider,
+    },
+    {
+      provide: 'HashProvider',
+      useClass: BcryptHashProvider,
     },
   ],
 })
