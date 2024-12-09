@@ -13,7 +13,7 @@ import {
 } from '@/candidate/repositories/implementations/mongo/candidate.schema';
 import { FindMatchCandidateService } from './services/find-match-candidate.service';
 import { OpenAIEmbed } from '@/shared/providers/embed/implementations/openai-embed.provider';
-import { PineconeProvider } from '@/shared/providers/search/implementations/pinecone.provider';
+import { PineconeProvider } from '@/shared/providers/vectorial-database/implementations/pinecone.provider';
 import { DeleteJobService } from './services/delete.job.service';
 import { UpdateJobService } from './services/update-job.service';
 import { DetailJobService } from './services/details-job.service';
@@ -44,7 +44,7 @@ import { DetailJobService } from './services/details-job.service';
       useClass: OpenAIEmbed,
     },
     {
-      provide: 'SearchProvider',
+      provide: 'VectorialDatabase',
       useClass: PineconeProvider,
     },
   ],
