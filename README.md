@@ -1,12 +1,12 @@
 # Match-Job
 
-## Sobre o Projeto
+## Sobre o Projeto 🎯
 
 O **Match-Job** é uma aplicação que realiza o pareamento entre candidatos e vagas de trabalho, utilizando inteligência artificial para calcular a compatibilidade entre as descrições de vagas e os perfis dos candidatos. O sistema é construído com **NestJS**, **OpenAI Embedding** para análise semântica, e **Pinecone** para armazenamento e recuperação dos scores de match.
 
 ---
 
-## Funcionalidades
+## Funcionalidades ✨
 
 1. **Cadastro de Vagas e Candidatos:**
    - Criação e gerenciamento de perfis de candidatos e descrições detalhadas das vagas.
@@ -22,7 +22,7 @@ O **Match-Job** é uma aplicação que realiza o pareamento entre candidatos e v
 
 ---
 
-## Tecnologias Utilizadas
+## Tecnologias Utilizadas 🚀
 
 - **[NestJS](https://nestjs.com/):** Framework para construção de APIs robustas e escaláveis.
 - **[OpenAI Embedding](https://platform.openai.com/docs/guides/embeddings):** Para análise semântica e cálculo de similaridade.
@@ -30,7 +30,7 @@ O **Match-Job** é uma aplicação que realiza o pareamento entre candidatos e v
 
 ---
 
-## Como Rodar o Projeto
+## Como Rodar o Projeto ⚙️
 
 ### Pré-requisitos
 
@@ -80,7 +80,7 @@ O **Match-Job** é uma aplicação que realiza o pareamento entre candidatos e v
    yarn start:dev
    ```
 
-### Testes
+### Testes ✅
 
 Execute os testes para garantir que tudo está funcionando como esperado:
 ```bash
@@ -91,7 +91,7 @@ yarn test
 
 ---
 
-## Endpoints Principais
+## Endpoints Principais 📌
 
 ### Criar uma vaga
 **POST /jobs**
