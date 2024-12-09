@@ -14,6 +14,9 @@ export class CandidateDocument {
   @Prop()
   email: string;
 
+  @Prop()
+  password: string;
+
   @Prop({ type: [{ type: String }] })
   skills: string[];
 

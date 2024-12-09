@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
 
 export class CreateCandidateDTO {
   @IsNotEmpty()
@@ -7,6 +7,11 @@ export class CreateCandidateDTO {
 
   @IsEmail()
   email: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @MinLength(6)
+  password: string;
 
   @IsNotEmpty({ each: true })
   skills: string[];
