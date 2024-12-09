@@ -43,6 +43,8 @@ export class MongoJobRepository implements JobRepository {
           id: candidate._id.toString(),
           createdAt: candidate.createdAt,
           updatedAt: candidate.updatedAt,
+          password: candidate.password,
+          status: candidate.status,
           name: candidate.name,
           email: candidate.email,
           skills: candidate.skills,
