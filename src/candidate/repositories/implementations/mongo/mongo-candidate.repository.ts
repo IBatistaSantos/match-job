@@ -11,6 +11,30 @@ export class MongoCandidateRepository implements CandidateRepository {
     @InjectModel(CandidateDocument.name)
     private candidateModel: Model<CandidateDocument>,
   ) {}
+  async findById(id: string): Promise<Candidate | undefined> {
+    const response = await this.candidateModel.findOne({
+      _id: new Types.ObjectId(id),
+      status: 'ACTIVE',
+    });
+
+    if (!response) {
+      return undefined;
+    }
+
+    const object = response.toJSON();
+
+    return new Candidate({
+      id: object._id.toString(),
+      createdAt: object.createdAt,
+      status: object.status,
+      password: object.password,
+      updatedAt: object.updatedAt,
+      name: object.name,
+      email: object.email,
+      skills: object.skills,
+      resume: object.resume,
+    });
+  }
   async findByEmail(email: string): Promise<Candidate | undefined> {
     const response = await this.candidateModel.findOne({
       email,
@@ -26,6 +50,7 @@ export class MongoCandidateRepository implements CandidateRepository {
       id: object._id.toString(),
       createdAt: object.createdAt,
       status: object.status,
+      password: object.password,
       updatedAt: object.updatedAt,
       name: object.name,
       email: object.email,
