@@ -1,6 +1,6 @@
 import { EmbeddingProvider } from '@/shared/providers/embed/embed.provider';
 import { JobRepository } from '../repositories/job.repository';
-import { SearchProvider } from '@/shared/providers/search/search.provider';
+import { VectorialDatabase } from '@/shared/providers/vectorial-database/vectorial-database.provider';
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { CandidateProps } from '@/candidate/entities/candidate';
 
@@ -15,8 +15,8 @@ export class FindMatchCandidateService {
     private readonly repository: JobRepository,
     @Inject('EmbeddingProvider')
     private readonly embeddingProvider: EmbeddingProvider,
-    @Inject('SearchProvider')
-    private readonly searchProvider: SearchProvider,
+    @Inject('VectorialDatabase')
+    private readonly vectorialDB: VectorialDatabase,
   ) {}
 
   async execute(jobId: string): Promise<FindMatchCandidateResponse[]> {
@@ -30,7 +30,7 @@ export class FindMatchCandidateService {
       job.description,
     );
 
-    const listIdsAndScores = await this.searchProvider.search(
+    const listIdsAndScores = await this.vectorialDB.search(
       embeddingJobDescription,
     );
 
